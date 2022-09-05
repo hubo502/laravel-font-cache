@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "xdarko/laravel-font-cache",
+    "description": "use for cache font",
     "keywords": [
-        ":vendor_name",
+        "xdarko",
         "laravel",
-        ":package_slug"
+        "laravel-font-cache"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/xdarko/laravel-font-cache",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Boris Hu",
+            "email": "hubo502@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Xdarko\\LaravelFontCache\\": "src",
+            "Xdarko\\LaravelFontCache\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Xdarko\\LaravelFontCache\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Xdarko\\LaravelFontCache\\LaravelFontCacheServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelFontCache": "Xdarko\\LaravelFontCache\\Facades\\LaravelFontCache"
             }
         }
     },
