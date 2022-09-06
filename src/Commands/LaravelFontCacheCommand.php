@@ -3,17 +3,18 @@
 namespace Xdarko\LaravelFontCache\Commands;
 
 use Illuminate\Console\Command;
+use Xdarko\LaravelFontCache\FontCacheInterface;
 
 class LaravelFontCacheCommand extends Command
 {
-    public $signature = 'laravel-font-cache';
+    public $signature = 'font:cache';
 
-    public $description = 'My command';
+    public $description = '缓存生成字体文件';
 
     public function handle(): int
     {
-        $this->comment('All done');
-
+        app(FontCacheInterface::class)->cacheFont();
+        $this->comment('操作完成');
         return self::SUCCESS;
     }
 }

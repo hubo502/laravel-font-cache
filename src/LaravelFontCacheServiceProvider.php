@@ -18,8 +18,21 @@ class LaravelFontCacheServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-font-cache')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-font-cache_table')
+            ->hasViews('font-cache')
             ->hasCommand(LaravelFontCacheCommand::class);
+    }
+
+    public function registeringPackage()
+    {
+        $this->app->singleton(FontCacheInterface::class, function ($app) {
+            return new LaravelFontCache();
+        });
+    }
+
+    public function packageBooted()
+    {
+        $this->publishes([
+            $this->package->basePath('../scripts') => base_path('/'),
+        ], "{$this->package->shortName()}-scripts");
     }
 }

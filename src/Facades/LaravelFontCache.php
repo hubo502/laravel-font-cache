@@ -11,6 +11,6 @@ class LaravelFontCache extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Xdarko\LaravelFontCache\LaravelFontCache::class;
+        return \Xdarko\LaravelFontCache\FontCacheInterface::class;
     }
 }
