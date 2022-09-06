@@ -25,8 +25,8 @@ class LaravelFontCache implements FontCacheInterface
     public static function renderCss()
     {
         $fontFamilies = config('font-cache.fontFamilies');
-        $css = view('font-cache::css',compact('fontFamilies'))->render();
-        Storage::disk('local')->put('font-cache/fonts.css',$css);
+        $css = view('font-cache::css', compact('fontFamilies'))->render();
+        Storage::disk('local')->put('font-cache/fonts.css', $css);
     }
 
     public static function renderCache($strings)
@@ -41,7 +41,6 @@ class LaravelFontCache implements FontCacheInterface
     {
         return implode('', array_unique(preg_split('/(?<!^)(?!$)/u', $strings)));
     }
-
 
     public static function resolvePageUrls()
     {
@@ -59,7 +58,9 @@ class LaravelFontCache implements FontCacheInterface
 
     public static function resolveSitemapUrls($sitemap = null)
     {
-        if (!$sitemap) return [];
+        if (! $sitemap) {
+            return [];
+        }
 
         info("read {$sitemap}..");
         $resp = Http::get(url($sitemap));
@@ -74,7 +75,6 @@ class LaravelFontCache implements FontCacheInterface
         return collect($data)->transform(function ($row) {
             return data_get($row, 'loc');
         })->values();
-
     }
 
     public static function parseXML($string)
@@ -83,17 +83,15 @@ class LaravelFontCache implements FontCacheInterface
         $json = json_encode($xml);
 
         return json_decode($json, true);
-
     }
 
     public static function fetchChnStrings($url)
     {
-        info('fetch chn strings - ' . $url);
+        info('fetch chn strings - '.$url);
         $resp = Http::get($url);
         $matched = null;
         preg_match_all('/[\x{4e00}-\x{9fff}]+/u', $resp->body(), $matched);
 
         return implode('', $matched[0]);
-
     }
 }

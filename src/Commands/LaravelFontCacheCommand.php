@@ -15,6 +15,7 @@ class LaravelFontCacheCommand extends Command
     {
         app(FontCacheInterface::class)->cacheFont();
         $this->comment('操作完成');
+
         return self::SUCCESS;
     }
 }
